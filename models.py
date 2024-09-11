@@ -15,7 +15,7 @@ PG_HOST = os.getenv('PG_HOST')
 PG_PORT = os.getenv('PG_PORT')
 
 # DSN = f'postgresql+asyncpg://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_NAME}'
-DSN = 'postgresql+asyncpg://postgres:17111984@127.0.0.1:5432/db_async'
+DSN = 'postgresql+asyncpg://postgres:17111984@127.0.0.1:5432/async_pg'
 
 engine = create_async_engine(DSN)
 SessionDB = async_sessionmaker(bind=engine, expire_on_commit=False)

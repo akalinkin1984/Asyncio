@@ -37,17 +37,17 @@ async def insert_people(people_list): # функция вставки в БД
 
 async def main():
     await migrate()
-    async with aiohttp.ClientSession() as session:
-        coros = [get_people(i, session) for i in range(1, 5)]
-
-        for coros_chunk in more_itertools.chunked(coros, 5):
-            people_list = await asyncio.gather(*coros_chunk)
-            asyncio.create_task(insert_people(people_list))
-
-        tasks = asyncio.all_tasks()
-        main_task = asyncio.current_task()
-        tasks.remove(main_task)
-        await asyncio.gather(*tasks)
+    # async with aiohttp.ClientSession() as session:
+    #     coros = [get_people(i, session) for i in range(1, 5)]
+    #
+    #     for coros_chunk in more_itertools.chunked(coros, 5):
+    #         people_list = await asyncio.gather(*coros_chunk)
+    #         asyncio.create_task(insert_people(people_list))
+    #
+    #     tasks = asyncio.all_tasks()
+    #     main_task = asyncio.current_task()
+    #     tasks.remove(main_task)
+    #     await asyncio.gather(*tasks)
 
 
 if __name__ == '__main__':
