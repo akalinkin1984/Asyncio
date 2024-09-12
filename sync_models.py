@@ -13,7 +13,8 @@ PG_NAME = os.getenv('PG_NAME')
 PG_HOST = os.getenv('PG_HOST')
 PG_PORT = os.getenv('PG_PORT')
 
-DSN = f'postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_NAME}'
+# DSN = f'postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_NAME}'
+DSN = 'postgresql://postgres:17111984@127.0.0.1:5432/sync_pg'
 
 
 engine = sq.create_engine(DSN)
@@ -26,19 +27,19 @@ class UpPeople(Base):
     __tablename__ = 'people'
 
     id = sq.Column(sq.Integer, primary_key=True)
-    birth_year = sq.Column(sq.String(length=20))
-    eye_color = sq.Column(sq.String(length=20))
-    films = sq.Column(sq.String(length=200))
-    gender = sq.Column(sq.String(length=20))
-    hair_color = sq.Column(sq.String(length=20))
-    height = sq.Column(sq.String(length=5))
-    homeworld = sq.Column(sq.String(length=200))
-    mass = sq.Column(sq.String(length=3))
-    name = sq.Column(sq.String(length=100))
-    skin_color = sq.Column(sq.String(length=20))
-    species = sq.Column(sq.String(length=200))
-    starships = sq.Column(sq.String(length=200))
-    vehicles = sq.Column(sq.String(length=200))
+    birth_year = sq.Column(sq.String)
+    eye_color = sq.Column(sq.String)
+    films = sq.Column(sq.String)
+    gender = sq.Column(sq.String)
+    hair_color = sq.Column(sq.String)
+    height = sq.Column(sq.String)
+    homeworld = sq.Column(sq.String)
+    mass = sq.Column(sq.String)
+    name = sq.Column(sq.String)
+    skin_color = sq.Column(sq.String)
+    species = sq.Column(sq.String)
+    starships = sq.Column(sq.String)
+    vehicles = sq.Column(sq.String)
 
 
 def create_tables(engine):
