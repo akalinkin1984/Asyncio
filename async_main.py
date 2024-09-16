@@ -78,7 +78,7 @@ async def main():
 
         for coros_chunk in more_itertools.chunked(coros, 5):
             people_list = await asyncio.gather(*coros_chunk)
-            asyncio.create_task(insert_people(people_list))
+            await asyncio.create_task(insert_people(people_list))
 
         tasks = asyncio.all_tasks()
         main_task = asyncio.current_task()
