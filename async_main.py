@@ -74,11 +74,11 @@ async def main():
 
     async with aiohttp.ClientSession() as session:
 
-        coros = [get_people(i, session) for i in range(1, 85)]
+        coros = (get_people(i, session) for i in range(1, 86))
 
         for coros_chunk in more_itertools.chunked(coros, 5):
             people_list = await asyncio.gather(*coros_chunk)
-            await asyncio.create_task(insert_people(people_list))
+            asyncio.create_task(insert_people(people_list))
 
         tasks = asyncio.all_tasks()
         main_task = asyncio.current_task()
