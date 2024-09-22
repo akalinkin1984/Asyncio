@@ -78,7 +78,7 @@ async def main():
 
         for coros_chunk in more_itertools.chunked(coros, 5):
             people_list = await asyncio.gather(*coros_chunk)
-            await asyncio.create_task(insert_people(people_list))
+            asyncio.create_task(insert_people(people_list))
 
         tasks = asyncio.all_tasks()
         main_task = asyncio.current_task()
@@ -88,6 +88,7 @@ async def main():
 
 if __name__ == '__main__':
     start = datetime.now()
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
     stop = datetime.now()
     print(stop - start)
